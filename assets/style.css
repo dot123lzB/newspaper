@@ -1,0 +1,116 @@
+@font-face{font-family:"Masthead";src:url("fonts/unifrakturmaguntia-latin-400-normal.woff2") format("woff2");}
+@font-face{font-family:"SSerif";font-weight:400;src:url("fonts/source-serif-4-latin-400-normal.woff2") format("woff2");}
+@font-face{font-family:"SSerif";font-weight:400;font-style:italic;src:url("fonts/source-serif-4-latin-400-italic.woff2") format("woff2");}
+@font-face{font-family:"SSerif";font-weight:600;src:url("fonts/source-serif-4-latin-600-normal.woff2") format("woff2");}
+@font-face{font-family:"SSerif";font-weight:700;src:url("fonts/source-serif-4-latin-700-normal.woff2") format("woff2");}
+@font-face{font-family:"SSerif";font-weight:700;font-style:italic;src:url("fonts/source-serif-4-latin-700-italic.woff2") format("woff2");}
+@font-face{font-family:"SSerif";font-weight:900;src:url("fonts/source-serif-4-latin-900-normal.woff2") format("woff2");}
+@font-face{font-family:"Franklin";font-weight:500;src:url("fonts/libre-franklin-latin-500-normal.woff2") format("woff2");}
+@font-face{font-family:"Franklin";font-weight:700;src:url("fonts/libre-franklin-latin-700-normal.woff2") format("woff2");}
+@font-face{font-family:"Franklin";font-weight:800;src:url("fonts/libre-franklin-latin-800-normal.woff2") format("woff2");}
+
+@page{size:A4;margin:0;}
+:root{
+  --ink:#000; --navy:#0a2a73; --up:#0b5a1c; --down:#a10f0f;
+  --serif:"SSerif","Noto Serif CJK JP",serif;
+  --sans:"Franklin","Noto Sans CJK JP","DejaVu Sans",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#fff;}
+body{color:var(--ink);font-family:var(--serif);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+a{color:inherit;text-decoration:none;}
+
+.page{width:210mm;height:297mm;padding:11mm 12mm 9mm;display:flex;flex-direction:column;overflow:hidden;background:#fff;page-break-after:always;break-after:page;}
+.page:last-child{page-break-after:auto;break-after:auto;}
+.content{flex:1;min-height:0;display:flex;flex-direction:column;gap:2.6mm;}
+
+/* running header / footer */
+.run{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2.2pt solid #000;padding-bottom:1.4mm;margin-bottom:3.4mm;
+  font-family:var(--sans);font-weight:800;font-size:9pt;letter-spacing:.1em;text-transform:uppercase;}
+.run .t{font-family:"Masthead";font-weight:400;font-size:17pt;letter-spacing:0;text-transform:none;}
+.pfoot{border-top:1.2pt solid #000;margin-top:2.4mm;padding-top:1.2mm;display:flex;justify-content:space-between;font-family:var(--sans);font-weight:700;font-size:8.5pt;}
+
+/* masthead (page 1) */
+.mast{text-align:center;border-bottom:3pt solid #000;padding-bottom:1.6mm;}
+.mast h1{font-family:"Masthead";font-weight:400;font-size:46pt;line-height:1;letter-spacing:.01em;white-space:nowrap;}
+.mast .motto{font-family:var(--serif);font-style:italic;font-size:11pt;margin-top:.6mm;}
+.dateline{display:flex;justify-content:space-between;border-bottom:1.2pt solid #000;padding:1.3mm 0;font-family:var(--sans);font-weight:800;font-size:9pt;letter-spacing:.1em;text-transform:uppercase;}
+
+/* market block */
+.mkt{display:grid;grid-template-columns:repeat(4,1fr);border:1.5pt solid #000;}
+.mkt .c{padding:1.2mm 2.4mm 1.3mm;border-right:1pt solid #000;border-bottom:1pt solid #000;}
+.mkt .c:nth-child(4n){border-right:none;}
+.mkt .c:nth-child(n+5){border-bottom:none;}
+.mkt .l{font-family:var(--sans);font-weight:800;font-size:8.5pt;letter-spacing:.08em;}
+.mkt .v{font-family:var(--serif);font-weight:900;font-size:17pt;line-height:1.08;}
+.mkt .d{font-family:var(--sans);font-weight:800;font-size:10pt;}
+.mkt .n{font-family:var(--sans);font-weight:500;font-size:8pt;margin-top:.3mm;}
+.up{color:var(--up);} .dn{color:var(--down);}
+.mkt2{display:flex;justify-content:space-between;border:1pt solid #000;border-top:none;padding:1.2mm 2.4mm;font-family:var(--sans);font-size:9pt;font-weight:700;}
+.mkt2 span b{font-weight:800;margin-right:1mm;}
+.mktnote{font-family:var(--sans);font-size:8.3pt;font-weight:500;margin-top:-1.4mm;}
+
+/* schedule */
+.sched{border-top:1.5pt solid #000;border-bottom:1.5pt solid #000;padding:1.4mm 0;font-family:var(--sans);font-size:9.5pt;line-height:1.5;}
+.sched .row{display:flex;gap:3mm;}
+.sched .h{font-weight:800;letter-spacing:.1em;text-transform:uppercase;min-width:22mm;}
+.sched b{font-weight:800;}
+
+/* section bar */
+.bar{background:#000;color:#fff;font-family:var(--sans);font-weight:800;font-size:10.5pt;letter-spacing:.16em;text-transform:uppercase;padding:1.1mm 2.6mm;}
+
+/* type */
+h2.hd{font-family:var(--serif);font-weight:900;font-size:19pt;line-height:1.08;letter-spacing:-.005em;}
+h2.hd.big{font-size:30pt;line-height:1.04;}
+h2.hd.mid{font-size:15.5pt;line-height:1.1;}
+h2.hd.sm{font-size:13pt;line-height:1.12;}
+.deck{font-family:var(--serif);font-style:italic;font-weight:600;font-size:10.8pt;line-height:1.28;margin:1mm 0 1.2mm;}
+.meta{font-family:var(--sans);font-weight:800;font-size:8.5pt;letter-spacing:.06em;margin:1mm 0 1.8mm;padding:.8mm 0;border-top:0.9pt solid #000;border-bottom:0.9pt solid #000;display:flex;gap:4mm;align-items:baseline;}
+.meta .st{font-family:var(--sans),"DejaVu Sans";letter-spacing:.12em;font-size:10pt;}
+.body{font-size:10pt;line-height:1.4;text-align:justify;hyphens:auto;-webkit-hyphens:auto;}
+.body p{margin:0;text-indent:1.2em;}
+.body p.f{text-indent:0;}
+.body p + p{margin-top:0;}
+.cols2{column-count:2;column-gap:5.5mm;column-rule:0.9pt solid #000;}
+.cols3{column-count:3;column-gap:5mm;column-rule:0.9pt solid #000;}
+.loc{font-family:var(--sans);font-weight:800;font-size:9pt;letter-spacing:.06em;}
+.w{font-weight:700;color:var(--navy);text-decoration:underline;text-decoration-thickness:1.2pt;text-underline-offset:1.2pt;}
+.src{font-family:var(--sans);font-weight:500;font-size:8.5pt;line-height:1.4;margin-top:1.6mm;break-inside:avoid;}
+.src a{text-decoration:underline;text-decoration-thickness:.6pt;text-underline-offset:1pt;}
+.src b{font-weight:800;}
+
+/* boxes */
+.box{border:1.4pt solid #000;padding:2.2mm 2.8mm;break-inside:avoid;margin:2mm 0;}
+.box.thick{border-width:2.2pt;}
+.box.inv{background:#000;color:#fff;}
+.box .bh{font-family:var(--sans);font-weight:800;font-size:9pt;letter-spacing:.12em;text-transform:uppercase;border-bottom:1pt solid currentColor;padding-bottom:.9mm;margin-bottom:1.4mm;}
+.box .bd{font-size:9.5pt;line-height:1.35;}
+.view{font-size:9.5pt;line-height:1.33;margin-bottom:1.1mm;}
+.view .o{font-family:var(--sans);font-weight:800;font-size:8.6pt;letter-spacing:.06em;text-transform:uppercase;margin-right:1mm;}
+.view:last-child{margin-bottom:0;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:5mm;}
+.row2.r6040{grid-template-columns:1.55fr 1fr;}
+.row2.r4060{grid-template-columns:1fr 1.45fr;}
+table.t{width:100%;border-collapse:collapse;font-size:9.3pt;line-height:1.3;}
+table.t th{font-family:var(--sans);font-weight:800;font-size:8.6pt;letter-spacing:.06em;text-align:left;border-bottom:1.4pt solid #000;padding:.7mm 1mm;}
+table.t td{border-bottom:0.8pt solid #000;padding:.9mm 1mm;vertical-align:top;}
+table.t td.n{font-family:var(--sans);font-weight:800;white-space:nowrap;}
+table.t td.r,table.t th.r{text-align:right;font-family:var(--sans);font-weight:800;white-space:nowrap;}
+.hr{border-top:1.4pt solid #000;}
+.hr2{border-top:2.4pt solid #000;}
+.toc{font-size:10pt;line-height:1.3;}
+.toc .s{font-family:var(--sans);font-weight:800;font-size:9pt;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:1pt solid #000;margin-top:2.2mm;padding-bottom:.4mm;}
+.toc ul{list-style:none;margin:.8mm 0 0;}
+.toc li{margin-bottom:.5mm;}
+.column .ttl{font-family:var(--serif);font-weight:900;font-size:19pt;line-height:1.1;}
+.column .by{font-family:var(--sans);font-weight:800;font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;}
+.legend{font-family:var(--sans);font-weight:500;font-size:8.3pt;line-height:1.4;}
+.pq{font-family:var(--serif);font-style:italic;font-weight:700;font-size:13pt;line-height:1.25;text-align:center;border-top:2pt solid #000;border-bottom:2pt solid #000;padding:2mm 1mm;margin:2.4mm 0;break-inside:avoid;}
+.tl td:first-child{font-family:var(--sans);font-weight:800;white-space:nowrap;width:19mm;}
+.vocab td.w1{font-family:var(--serif);font-weight:900;font-size:11.5pt;width:29mm;}
+.vocab td.lv{font-family:var(--sans);font-weight:800;font-size:8.6pt;width:11mm;}
+.vocab td{font-size:9.6pt;line-height:1.28;padding:1mm 1mm;}
+.vocab td .jp{font-family:"Noto Sans CJK JP",var(--sans);font-weight:500;font-size:9pt;}
+.vocab td i{font-size:9.2pt;}
+.nobr{white-space:nowrap;}
+.body ul{margin:1mm 0 1mm 4.5mm;} .body li{margin-bottom:.8mm;text-align:left;}
