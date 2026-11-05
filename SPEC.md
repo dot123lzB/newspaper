@@ -37,6 +37,9 @@ Two lines (TODAY, AHEAD). BOLD: central-bank decisions, elections/vote counts, m
 - Neutrality: facts first, then each outlet's/side's framing, attributed to who actually said it. No own opinion on contested politics outside the labelled Editor's assessment and the column. Election results are "projections" unless certified; say who called them. Say when you relied on a secondary report.
 - No lyrics/long quotes, no images of real people, no investment advice.
 
+## Sources
+Start from SOURCES.md (tested site list, known-bad sites, search tips). Only go beyond it when a needed category is missing.
+
 ## Build procedure
 1. Repo is at /home/claude/newspaper (clone https://github.com/dot123lzB/newspaper if absent; add via add_repo if needed). Fonts and CSS are in `assets/` (no npm needed).
 2. Copy `examples/issue_No2_2026-11-05.html` to `work/issue.html` as the skeleton (it links ../assets/style.css) and REPLACE the content, keeping the same components and class names; delete pages you do not need and fix "Page X of N" and contents-grid page numbers. Reuse the structure of the example pages (p1 front, p2-3 politics, p4-5 markets, p5-6 sci/society, p7-8 deep dive, p9 words).
