@@ -26,3 +26,9 @@ Check these FIRST, in this order, before open-ended searching. WebFetch one page
 ## Rules
 - Prefer two sources for every number; when only one, mark "≈" and say so in "About this edition".
 - Never present an undated or old page as today's news.
+
+## Reader's media list and what actually opens (tested 2026-11-06)
+Opens (homepage/index, use for headlines; open dated articles via WebSearch for detail): Al Jazeera (aljazeera.com), SCMP (scmp.com; relative timestamps), investingLive (investinglive.com; dated headlines, FX/market color), FXStreet news (no timestamps), CBS News, Yahoo Finance live blogs, Kiplinger, Trading Economics, stockanalysis.com quote pages, Nippon.com.
+Blocked by the fetch tool (do not retry; use WebSearch snippets/headlines only, or AP/Reuters text republished by local sites): apnews.com, reuters.com, thehindu.com, theguardian.com, bbc.com.
+Not yet tested: Ground News, NYT, WSJ, Fox, CNN, Globe and Mail, Asia Times, Times of India, Indian Express, Bloomberg, FT, Forbes, Foreign Affairs, Forex Factory, TradingView, Myfxbook, CME FedWatch, BLS, BEA, ECB, Yomiuri, Sankei, Asahi, Mainichi, Nikkei. Paywalled sites (NYT, WSJ, FT, Bloomberg) are never bypassed: use headlines/snippets only and say so.
+Price data: no API works (Yahoo chart/Stooq robots-disallowed). Fresh: stockanalysis.com/stocks/<ticker>/ (price, close, day range, prev close). TE currency pages give price/change, no range.

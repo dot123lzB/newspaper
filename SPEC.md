@@ -37,6 +37,16 @@ Two lines (TODAY, AHEAD). BOLD: central-bank decisions, elections/vote counts, m
 - Neutrality: facts first, then each outlet's/side's framing, attributed to who actually said it. No own opinion on contested politics outside the labelled Editor's assessment and the column. Election results are "projections" unless certified; say who called them. Say when you relied on a secondary report.
 - No lyrics/long quotes, no images of real people, no investment advice.
 
+
+## Editorial rules from the reader (2026-11-06) — apply every day
+1. Multi-outlet synthesis: for each topic, check outlets across blocs (wires; US/UK/Canada papers; non-Western: Al Jazeera, SCMP, Asia Times, Times of India/The Hindu/Indian Express; business: Bloomberg/FT/Nikkei/Forbes/Foreign Affairs; Japanese papers: Yomiuri, Sankei, Asahi, Mainichi, Nikkei). Compare their stance and bias, then integrate. Time is short (25 min): for each MAJOR story read >=2-3 outlets from different blocs; rotate the rest. Say which outlets were actually read; never claim a view from an outlet you did not read (headlines/snippets count only as "headline").
+2. Rewrite in your own words into ONE polished article per topic (no patchwork).
+3. Difficulty gradient inside articles: open plain and accessible (B1-B2), then move to professional detail and terminology (C1-C2). Show the article's CEFR as the top level reached.
+4. Quotes: personal-use study paper, so short direct quotes, quoted headlines and data are fine, always attributed. Still do not reproduce articles wholesale.
+5. Classic layout (in assets/style.css): NO boxed articles (use whitespace or thin vertical rules), 2-3 column body, sans-serif headlines, serif body, DROP CAP on lead articles (add class `dc` to `.body`; start the lead paragraph with a normal word, not an abbreviation like "U.S.", and omit the `.loc` dateline there).
+6. Market cells: value, change, and Day's Range (high-low) with a range bar (`tools/spark.py rangebar`) plus a sparkline (`spark`) when verified data exist. NEVER invent: if no fresh source for range/series, omit them and say so in About. Known limit: Yahoo/Stooq APIs are blocked and history pages (Yahoo, investing.com, stockanalysis history) are days to weeks stale; stockanalysis.com QUOTE pages (ETFs, e.g. ACWI) are fresh and show Day's Range and the 4 p.m. close.
+7. Numbers: re-fetch quote pages near build time; if two snapshots of one instrument disagree, use the later dated one and mark "≈". Check the Day's Range/close timestamp.
+
 ## Sources
 Start from SOURCES.md (tested site list, known-bad sites, search tips). Only go beyond it when a needed category is missing.
 

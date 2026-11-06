@@ -114,3 +114,21 @@ table.t td.r,table.t th.r{text-align:right;font-family:var(--sans);font-weight:8
 .vocab td i{font-size:9.2pt;}
 .nobr{white-space:nowrap;}
 .body ul{margin:1mm 0 1mm 4.5mm;} .body li{margin-bottom:.8mm;text-align:left;}
+
+/* ===== Classic style (v3): no boxed articles, sans headlines, drop caps, ranges, sparklines ===== */
+h2.hd,.column .ttl{font-family:var(--sans);font-weight:800;letter-spacing:-.01em;}
+h2.hd.big{font-weight:800;}
+.deck{font-family:var(--serif);}
+.box,.box.thick{border:none;border-left:.8pt solid #000;padding:.4mm 0 .4mm 3mm;margin:1.5mm 0;}
+.box .bh{border-bottom:none;padding-bottom:0;margin-bottom:1mm;}
+.box.inv{background:none;color:#000;border-left:2pt solid #000;}
+.hr2{border-top:none;height:1.6mm;}
+.mkt{border:none;border-top:1.5pt solid #000;border-bottom:1.5pt solid #000;}
+.mkt .c{border-bottom:none;border-right:.75pt solid #000;}
+.mkt .c:nth-child(n+5){border-top:.75pt solid #000;}
+.mkt .rng{font-family:var(--sans);font-weight:700;font-size:7.8pt;margin-top:.3mm;line-height:1.2;}
+.mkt .rng svg{display:block;margin-top:.4mm;}
+.mkt2{border:none;border-bottom:.75pt solid #000;}
+.dc p.f::first-letter{float:left;font-family:var(--serif);font-weight:900;font-size:34pt;line-height:.8;padding:1.2mm 1.4mm 0 0;}
+.dc p.f .loc{display:none;}
+.spark{display:inline-block;vertical-align:middle;}
