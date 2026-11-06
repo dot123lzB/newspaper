@@ -3,9 +3,9 @@
 Personal English-language daily newspaper for a Japanese reader studying English. ONE A4 PDF, delivered via SendUserFile BEFORE 07:00 JST.
 
 ## Timing
-- The run starts at 01:30 JST. Time is NOT a constraint for reading: read thoroughly. The only hard rule is delivery by 07:00 JST.
-- Phase 1 (01:30-05:45): media sweep (see below), draft all non-market articles. Phase 2 (06:05-06:45): US closes are final at 06:00 JST (05:00 in summer time): fetch FINAL market data and ranges, re-verify every number, update headlines that changed, then layout/fit/render/check. 06:45-06:55 deliver.
-- At 06:50 deliver whatever is complete; say exactly what is missing. Never use the extended-research tool.
+- The run starts at 06:20 JST (US cash close was 06:00 JST in Nov-Mar; 05:00 in summer time, so US/Europe/FX data are final). There is NO delivery deadline: take as long as needed to read thoroughly, think, verify and build a careful issue. Prefer correctness and depth over speed.
+- Order: (1) bootstrap the kit; (2) fetch FINAL market data first (ranges, closes, 10-day closes for sparklines); (3) media sweep and reading; (4) write; (5) re-verify every number against a second snapshot/source just before building; (6) layout, fit, render, look at every page; (7) deliver.
+- You may use the extended-research tool (launch_extended_search_task) for the Deep Dive and for any story where it helps; still read primary pages yourself and cite them.
 - Nobody can answer questions: decide, and put caveats in the About box and the final message.
 
 ## Reader / print constraints
@@ -67,3 +67,6 @@ Each major article names, in a short "How outlets framed it" passage (no boxes),
 - Day's range (high-low): Alpha Vantage free key (ALPHAVANTAGE_KEY in the task prompt): `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=GBP&to_symbol=JPY&apikey=KEY` (also USD/JPY; TIME_SERIES_DAILY for ETFs such as ACWI; outputsize compact); ~25 calls/day limit. Otherwise stockanalysis quote pages (ACWI shows Day's Range), Yahoo/Bloomberg/AP text that states the intraday high/low, Investing.com pages if dated today. Take the range for the same session as the close. If after real attempts no source exists for a cell, show "range n/a" and list it in About; do not estimate.
 - Draw with tools/spark.py (`rangebar`, `spark`); require >=4 verified closes for a sparkline. Hourly data is not available free, so sparklines use daily closes.
 - Re-fetch each quote near build time; if two snapshots disagree use the later dated one.
+
+## Bootstrap (fresh session)
+Preferred: the Project "newspaper" docs (project_read: paths under `newspaper/`: SPEC.md, SOURCES.md, style.css, spark.py, fit.py, render.py, bootstrap.sh, build_example.py). Create /home/claude/newspaper/{assets,tools,work,out}; put style.css in assets/, spark.py/fit.py/render.py in tools/; run `bash bootstrap.sh /home/claude/newspaper` (npm-installs @fontsource fonts and copies the woff2 files into assets/fonts). Fallback: `git clone --depth 1 https://github.com/dot123lzB/newspaper /home/claude/newspaper` (public repo; fonts and tools already in it). Last fallback: npm fonts + CSS from SPEC and build from scratch.
