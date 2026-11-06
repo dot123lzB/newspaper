@@ -32,3 +32,10 @@ Opens (homepage/index, use for headlines; open dated articles via WebSearch for 
 Blocked by the fetch tool (do not retry; use WebSearch snippets/headlines only, or AP/Reuters text republished by local sites): apnews.com, reuters.com, thehindu.com, theguardian.com, bbc.com.
 Not yet tested: Ground News, NYT, WSJ, Fox, CNN, Globe and Mail, Asia Times, Times of India, Indian Express, Bloomberg, FT, Forbes, Foreign Affairs, Forex Factory, TradingView, Myfxbook, CME FedWatch, BLS, BEA, ECB, Yomiuri, Sankei, Asahi, Mainichi, Nikkei. Paywalled sites (NYT, WSJ, FT, Bloomberg) are never bypassed: use headlines/snippets only and say so.
 Price data: no API works (Yahoo chart/Stooq robots-disallowed). Fresh: stockanalysis.com/stocks/<ticker>/ (price, close, day range, prev close). TE currency pages give price/change, no range.
+
+## Media access matrix (tested 2026-11-06, WebFetch)
+OPEN, current: Al Jazeera, SCMP (relative times), Fox News (page-dated), Asia Times (month-dated), Bloomberg (undated headlines; articles likely paywalled), TradingView news (relative times), AllAfrica (dated), Google News (headline + outlet + relative time; shows NYT/WaPo/CBS/CNBC headlines), investingLive (dated), FXStreet (undated), Trading Economics, CBS News, Yahoo Finance, Kiplinger, Nippon.com, ScienceDaily, The Numbers, BLS, BEA, Frankfurter (ECB FX rates).
+OPEN but stale/undated (use only dated articles): CNN (2017-era cache), Globe and Mail (2016-era cache), Nikkei.com (2019-era cache), Ground News (Oct 27), Investing.com (Oct 23-25), ECB press page, Foreign Affairs (undated), Forbes (Sept-Oct), NewsPicks (aggregator, undated), CME FedWatch (widget, no numbers).
+BLOCKED (cannot open; do not circumvent): NYT, WSJ, FT, AP, Reuters, AFP, BBC, Guardian, The Hindu, Times of India, Indian Express, Yomiuri, Sankei, Asahi, Mainichi, Forex Factory (error), Alpha Vantage/Twelve Data/Yahoo chart/Stooq APIs (robots; Alpha Vantage is NOT robots-blocked), Stooq, Yahoo chart API.
+WebSearch with allowed_domains is rejected; searching by outlet name in the query rarely returns that outlet's current article.
+Not yet tested: Myfxbook.

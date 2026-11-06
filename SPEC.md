@@ -1,12 +1,12 @@
-# The Morning Dispatch — daily edition spec (v2, "Plan B": light 6-7 page issue)
+# The Morning Dispatch — daily edition spec (v3: full multi-outlet edition)
 
 Personal English-language daily newspaper for a Japanese reader studying English. ONE A4 PDF, delivered via SendUserFile BEFORE 07:00 JST.
 
-## Timing (hard)
-- Run starts ~06:30 JST. US cash close is 06:00 JST (Nov-Mar; 05:00 JST in summer time, check), so US/Europe/FX numbers are final.
-- 06:30-06:41 research (parallel tool calls in batches; ~15-20 searches/fetches total; deep dive <=5). 06:41-06:51 write HTML. 06:51-06:56 fit check, render, look at pages, deliver.
-- At 06:52 deliver whatever is complete (drop optional blocks first). A late perfect issue is worse than an on-time slightly lighter one. Never use the extended-research tool. WebSearch mode "standard".
-- Nobody can answer questions: decide, put caveats in the About box and the final message.
+## Timing
+- The run starts at 01:30 JST. Time is NOT a constraint for reading: read thoroughly. The only hard rule is delivery by 07:00 JST.
+- Phase 1 (01:30-05:45): media sweep (see below), draft all non-market articles. Phase 2 (06:05-06:45): US closes are final at 06:00 JST (05:00 in summer time): fetch FINAL market data and ranges, re-verify every number, update headlines that changed, then layout/fit/render/check. 06:45-06:55 deliver.
+- At 06:50 deliver whatever is complete; say exactly what is missing. Never use the extended-research tool.
+- Nobody can answer questions: decide, and put caveats in the About box and the final message.
 
 ## Reader / print constraints
 White background, black text only (no grey/light text), rules >=0.75pt, body >=10pt, dark navy highlights, dark green/red up/down. English only.
@@ -14,9 +14,9 @@ White background, black text only (no grey/light text), rules >=0.75pt, body >=1
 ## Date and issue number
 `TZ=Asia/Tokyo date`. Dateline "Friday, November 6, 2026". "Vol. I · No. N": N counts weekdays inclusively; 2026-11-05 = No. 2, 2026-11-06 = No. 3, 2026-11-09 = No. 4, ... (weekday editions only; skip weekends). Edition label "Standard Edition · Tokyo".
 
-## Pages (target 6, max 7)
+## Pages (as many as needed; typically 9-11)
 1. FRONT: masthead, dateline, market block, Today & Ahead, Top Story (2 columns), 3x2 contents grid (section, pages, key headline), "The Day's Column" (~150 words, Tensei-Jingo style, thoughtful, NON-partisan), legend line.
-2. POLITICS & WORLD + JAPAN (Japan's most important story of the day must appear). Facts first, then "How the media framed it" box (outlet-attributed, only from what you read).
+2-3. POLITICS & WORLD (2 pages) + JAPAN (may share a page) (Japan's most important story of the day must appear). Facts first, then "How the media framed it" box (outlet-attributed, only from what you read).
 3. MARKETS & ECONOMY: market digest (what moved markets), "Stocks of the Day" (interesting individual movers with WHY + small table), GBP/JPY note (reader holds GBP/JPY), central-bank calendar.
 4. SCIENCE & TECHNOLOGY (>=1 story) + SOCIETY, CULTURE, SPORTS (>=1 story each; freshest verifiable item; never present old results as new).
 5. DEEP DIVE (1 page; 2 pages only if time allows): the single most important/interesting story or the market. Headline + deck + stars; 4-cell key-number strip; USE BULLET POINTS (<ul><li>) for facts, positions, what to watch; competing arguments table attributed to who said them; "What this means"; "Editor's assessment: what the evidence supports and what it does not" (labelled analysis, hedged, no predictions, no investment advice).
@@ -57,3 +57,13 @@ Start from SOURCES.md (tested site list, known-bad sites, search tips). Only go 
 4. Render: `python3 tools/render.py work/issue.html out/MorningDispatch_YYYY-MM-DD.pdf`; `pdftoppm -r 60 -png` and LOOK at every page (nothing cut, no orphan headline, footers/TOC right, total pages == N).
 5. Deliver: SendUserFile (status "proactive", caption = date + lead), then SendUserMessage in Japanese (<=8 lines): lead, deep-dive topic, page count, honest caveats. If incomplete, still deliver and say exactly what is missing.
 6. Optionally save the finished issue HTML+PDF under `examples/` only if asked; do not commit daily files unless instructed.
+
+## Media sweep (every day, ALL listed outlets, read the content)
+Work through every outlet in SOURCES.md "Reader's media list". For each: try the homepage/section page with WebFetch; for each major story open the dated ARTICLE (find its URL on the page or via WebSearch with the outlet name + date + topic) and read the text, not just the headline. Record per outlet: opened? read in full? headline only? blocked? Put this table in the About box (compact: outlet -> read / headline only / blocked). Blocked or stale outlets cannot be bypassed (no mirrors, caches or proxies): say so. Use aggregators (Google News, Ground News, TradingView news, Bloomberg/Fox/Al Jazeera/SCMP/Asia Times pages) to see how blocked outlets headlined a story, and label those as "seen via <aggregator>".
+Each major article names, in a short "How outlets framed it" passage (no boxes), the outlets actually read and their different emphases/biases.
+
+## Market data for ranges and sparklines (never invent)
+- Daily closes for sparklines (10 sessions): FX from the ECB reference-rate API via WebFetch: `https://api.frankfurter.dev/v1/<start>..<end>?base=GBP&symbols=JPY,USD` and `?base=USD&symbols=JPY` (label "ECB daily reference rate"). Indices (Dow, S&P 500, Nasdaq, Nikkei) and commodities: collect the last 6-10 dated closes from dated "stock market today" articles (Kiplinger, Yahoo Finance blog, AP republishers), Trading Economics, Yahoo history pages (only dates that are present), Bloomberg/investingLive wraps. ACWI/ETFs: stockanalysis.com quote and history pages.
+- Day's range (high-low): Alpha Vantage free key (ALPHAVANTAGE_KEY in the task prompt): `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=GBP&to_symbol=JPY&apikey=KEY` (also USD/JPY; TIME_SERIES_DAILY for ETFs such as ACWI; outputsize compact); ~25 calls/day limit. Otherwise stockanalysis quote pages (ACWI shows Day's Range), Yahoo/Bloomberg/AP text that states the intraday high/low, Investing.com pages if dated today. Take the range for the same session as the close. If after real attempts no source exists for a cell, show "range n/a" and list it in About; do not estimate.
+- Draw with tools/spark.py (`rangebar`, `spark`); require >=4 verified closes for a sparkline. Hourly data is not available free, so sparklines use daily closes.
+- Re-fetch each quote near build time; if two snapshots disagree use the later dated one.
